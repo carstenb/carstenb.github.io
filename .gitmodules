@@ -1,0 +1,3 @@
+[submodule "hugo-sustain"]
+	path = hugo-sustain
+	url = https://github.com/nurlansu/hugo-sustain
