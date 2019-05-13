@@ -24,6 +24,7 @@ theme = "hugo-sustain"
   LinkedIn      = "carstenbokemeyer"
   XING          = ""
   Medium        = ""
+  RSS           = "/blog/index.xml"
 
 ## Main Menu
 [[menu.main]]
