@@ -17,7 +17,7 @@ theme = "hugo-sustain"
   custom_css = []
   custom_js  = []
 
-[params.social]
+[params.Social]
   Github        = ""
   Email         = "info@carsten-bokemeyer.de"
   Twitter       = "carbo86"
