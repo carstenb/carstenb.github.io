@@ -18,18 +18,17 @@ theme = "hugo-sustain"
   custom_js  = []
 
 [params.social]
-  Github        = "username"
-  Email         = "email@example.com"
+  Github        = ""
+  Email         = "info@carsten-bokemeyer.de"
   Twitter       = "carbo86"
-  LinkedIn      = "username"
-  Stackoverflow = "username"
-  Medium        = "username"
-  Telegram      = "username"
+  LinkedIn      = "carstenbokemeyer"
+  XING          = ""
+  Medium        = ""
 
 ## Main Menu
 [[menu.main]]
   name = "blog"
-  weight = 100
+  weight = 300
   identifier = "blog"
   url = "/blog/"
 [[menu.main]]
@@ -38,7 +37,7 @@ theme = "hugo-sustain"
   weight = 200
   url = "/projects/"
 [[menu.main]]
-  name = "resume"
-  identifier = "resume"
-  weight = 300
-  url = "/resume/"
+  name = "about"
+  identifier = "about"
+  weight = 100
+  url = "/about/"
