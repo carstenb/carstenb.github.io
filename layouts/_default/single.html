@@ -4,9 +4,11 @@
 
       <!-- Header -->
       {{ partial "header" . }}
-      {{ if isset .Params "showpagemeta" }}
-        {{ .Render "projects" }}
-      {{ else }}
+        {{ if (ne (strings.TrimSuffix "/projects/" .URL) .URL) }}
+          {{ .Render "projects" }}
+        {{ else if (ne (strings.TrimSuffix "/about/" .URL) .URL) }}
+          {{ .Render "about" }}
+        {{ else }}
       <div class="container">
         <div class="blog-post">
           <h3>
