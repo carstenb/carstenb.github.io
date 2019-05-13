@@ -8,7 +8,7 @@ showpagemeta: true
 
 Carsten Bokemeyer is an experienced Product Guy and Agile Enthusiast working in Bonn.
 
-He commenced his professional career in a Marketing Agency in Bonn, where he was working as a Consultant in the New Media department. At the same time, he successfully attended an evening course in marketing communication at the Westdeutsche Akademie für Kommunikation in Cologne.
+He commenced his professional career at [SCHWIND. Werbeagentur](https://www.schwind.de) a Marketing Agency in Bonn, where he was working as a Consultant in the New Media department. At the same time, he successfully attended an evening course in marketing communication at the Westdeutsche Akademie für Kommunikation in Cologne.
 
 In 2009, Carsten Bokemeyer switched into a corporate environment in order to further develop his skills in the field of online marketing. He started as an Online Marketing Manager at Studitemps GmbH and attended a second evening course at the Westdeutsche Akademie für Kommunikation in Cologne, this time with focus on online marketing.
 
