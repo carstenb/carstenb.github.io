@@ -1,6 +1,7 @@
 baseurl = "https://example.com/"
 languageCode = "de-DE"
 title = "Carsten Bokemeyer"
+
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = ""
 theme = "hugo-sustain"
@@ -11,7 +12,7 @@ theme = "hugo-sustain"
 [params]
   avatar = "profile_new.png"
   author = "Carsten Bokemeyer"
-  description = "Describe your website"
+  description = "Dies ist das Online Protfolio von Carsten Bokemeyer. Zur Zeit arbeitet er als Product Owner in Bonn."
 
   # Custom assets can be linked with their paths relative to static/
   custom_css = []
