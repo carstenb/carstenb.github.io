@@ -4,10 +4,14 @@
     <div class="panel panel-default">
       <div class="panel-body">
       {{ range $el := .Site.Data.projects.source }}
+        <div class="project">
+        <img class="project-image" src="{{ .Site.BaseURL }}img/{{ .image }}" alt="Projektbild">
+        <br>
         <h5>
           <i class="{{ .icon }}"></i>&nbsp;&nbsp;
-          <strong><a href="{{ .url }}">{{ $el.name }}</a></strong>&nbsp;-&nbsp;{{ $el.description }}
+          <a href="{{ .url }}">{{ $el.name }}</a>&nbsp;-&nbsp;{{ $el.description }}
         </h5>
+      </div>
       {{ end }}
       </div>
     </div>
