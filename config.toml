@@ -12,7 +12,7 @@ theme = "hugo-sustain"
 [params]
   avatar = "profile_new.png"
   author = "Carsten Bokemeyer"
-  description = "Dies ist das Online Protfolio von Carsten Bokemeyer. Zur Zeit arbeitet er als Product Owner in Bonn."
+  description = "Dies ist das Online Portfolio von Carsten Bokemeyer. Zur Zeit arbeitet er als Product Owner in Bonn."
 
   # Custom assets can be linked with their paths relative to static/
   custom_css = []
@@ -25,7 +25,7 @@ theme = "hugo-sustain"
   LinkedIn      = "carstenbokemeyer"
   XING          = ""
   Medium        = ""
-  RSS           = "/blog/index.xml"
+  RSS           = "blog/index.xml"
 
 ## Main Menu
 [[menu.main]]
