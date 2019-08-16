@@ -5,7 +5,7 @@
       <div class="panel-body">
       {{ range $el := .Site.Data.projects.source }}
         <div class="project">
-        <img class="project-image" src="{{ .Site.BaseURL }}img/{{ .image }}" alt="Projektbild">
+          <img class="project-image" src="../img/{{ .image }}" alt="Projektbild">
         <br>
         <h5>
           <i class="{{ .icon }}"></i>&nbsp;&nbsp;

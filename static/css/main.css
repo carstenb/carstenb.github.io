@@ -196,6 +196,11 @@ html, body {
 div.footer{
   border-bottom: 5px solid #4A90E2;;
 }
+
+.project-image{
+  width: 100%;
+}
+
 /* Set the fixed height of the footer here */
 /*.footer {
   height: 50px;
