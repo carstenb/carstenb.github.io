@@ -4,9 +4,61 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name='google-site-verification'content='8RdzV0mfM8hKjegtaVR63btNxwuKG36fIE7mBEONZl8'>
     <meta name="author" content="{{ .Site.Params.Author }}" />
     <meta name="description" content="{{ .Site.Params.description }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ .Site.BaseURL }}img/favicon.ico">
+
+    <link rel="canonical" href="https://www.carsten-bokemeyer.de/">
+
+    <!-- Facebook Open Graph -->
+    <meta property="og:url" content="https://www.carsten-bokemeyer.de/">
+    <meta property="og:site_name" content="{{ .Site.Params.Author }}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:title" content="{{ .Site.Params.Author }} | Product Owner aus Bonn">
+    <meta property="og:description" content="{{ .Site.Params.description }}">
+    <meta property="og:image" content="{{ .Site.BaseURL }}img/social-media/teaser-facebook.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@{{ .Site.Params.Social.Twitter }}">
+    <meta name="twitter:creator" content="@{{ .Site.Params.Social.Twitter }}">
+    <meta name="twitter:url" content="https://www.carsten-bokemeyer.de/">
+    <meta name="twitter:title" content="{{ .Site.Params.Author }} | Product Owner aus Bonn">
+    <meta name="twitter:description" content="{{ .Site.Params.description }}">
+    <meta name="twitter:image" content="{{ .Site.BaseURL }}img/social-media/teaser-twitter.jpg">
+
+    <!-- Activate ClearType in Mobile IE for smoothing fonts. -->
+    <meta http-equiv="cleartype" content="on">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ .Site.BaseURL }}img/favicons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ .Site.BaseURL }}img/favicons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ .Site.BaseURL }}img/favicons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ .Site.BaseURL }}img/favicons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="{{ .Site.BaseURL }}img/favicons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ .Site.BaseURL }}img/favicons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ .Site.BaseURL }}img/favicons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ .Site.BaseURL }}img/favicons/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="{{ .Site.BaseURL }}img/favicons/favicon-196x196.png" />
+    <link rel="icon" type="image/png" href="{{ .Site.BaseURL }}img/favicons/favicon-96x96.png" />
+    <link rel="icon" type="image/png" href="{{ .Site.BaseURL }}img/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" href="{{ .Site.BaseURL }}img/favicons/favicon-16x16.png" />
+    <link rel="icon" type="image/png" href="{{ .Site.BaseURL }}img/favicons/favicon-128.png" />
+    <meta name="msapplication-TileColor" content="#545154" />
+    <meta name="msapplication-TileImage" content="{{ .Site.BaseURL }}img/favicons/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="{{ .Site.BaseURL }}img/favicons/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="{{ .Site.BaseURL }}img/favicons/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="{{ .Site.BaseURL }}img/favicons/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="{{ .Site.BaseURL }}img/favicons/mstile-310x310.png" />
+
+  <link type="application/atom+xml" rel="alternate" href="{{ .Site.BaseURL }}{{ .Site.Params.Social.RSS }}" title="{{ .Site.Params.Author }}" />
+
+
     <title>
     {{- $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" -}}
     {{- if eq $url "/" -}}
@@ -15,6 +67,8 @@
         {{- if .Params.heading -}} {{- .Params.heading -}} {{- else -}} {{- .Title -}} {{- end -}}
     {{- end -}}
 	</title>
+
+
     {{ .Hugo.Generator }}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}css/main.css" />
