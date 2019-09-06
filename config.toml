@@ -19,12 +19,12 @@ theme = "hugo-sustain"
   custom_js  = []
 
 [params.Social]
-  Github        = ""
   Email         = "info@carsten-bokemeyer.de"
   Twitter       = "carbo86"
+  XING          = "Carsten_Bokemeyer"
   LinkedIn      = "carstenbokemeyer"
-  XING          = ""
   Medium        = ""
+  Github        = ""
   RSS           = "blog/index.xml"
 
 ## Main Menu
