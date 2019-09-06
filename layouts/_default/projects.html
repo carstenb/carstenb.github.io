@@ -5,12 +5,13 @@
       <div class="panel-body">
       {{ range $el := .Site.Data.projects.source }}
         <div class="project">
-          <img class="project-image" src="../img/{{ .image }}" alt="Projektbild">
+          {{ if .image }}
+          <img class="project-image" src="../img/{{ .image }}" alt="{{ $el.name }}">
+          {{ end }}
+          <h5>{{ $el.name }}</h5>
+        {{ $el.description }}
         <br>
-        <h5>
-          <i class="{{ .icon }}"></i>&nbsp;&nbsp;
-          <a href="{{ .url }}">{{ $el.name }}</a>&nbsp;-&nbsp;{{ $el.description }}
-        </h5>
+        <a href="{{ .url }}">Visit Project</a>
       </div>
       {{ end }}
       </div>
