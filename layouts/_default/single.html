@@ -8,6 +8,8 @@
           {{ .Render "projects" }}
         {{ else if (ne (strings.TrimSuffix "/about/" .URL) .URL) }}
           {{ .Render "about" }}
+        {{ else if (ne (strings.TrimSuffix "/impress/" .URL) .URL) }}
+          {{ .Render "impress"}}
         {{ else }}
       <div class="container">
         <div class="blog-post">
