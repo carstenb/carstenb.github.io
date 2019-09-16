@@ -1,13 +1,16 @@
 baseurl = "https://example.com/"
+theme = "hugo-sustain"
 languageCode = "de-DE"
 title = "Carsten Bokemeyer"
 
-enableRobotsTXT = true
-canonifyURLs = true
+
+
+showReadingTime = true
 
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = ""
-theme = "hugo-sustain"
+enableRobotsTXT = true
+canonifyURLs = true
 
 [permalinks]
   post = "/:year/:month/:day/:slug"
