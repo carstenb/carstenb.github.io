@@ -13,9 +13,7 @@
         {{ else }}
       <div class="container">
         <div class="blog-post">
-          <h3>
-            <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
-          </h3>
+          <h3>{{ .Title }}</h3>
         </div>
         <div class="blog-title">
           <h4>
@@ -31,8 +29,8 @@
               {{ .Content }}
               <hr>
               <div class="related-posts">
-                <h5>Related Posts</h5>
                 {{ range first 3 ( where ( where .Site.Pages.ByDate.Reverse ".Params.tags" "intersect" .Params.tags ) "Permalink" "!=" .Permalink ) }}
+                  <h5>Related Posts</h5>
                   <div class="row">
                     <div class="col-sm-4 col-md-4 col-lg-4">
                       <h6 style="text-align: right">
