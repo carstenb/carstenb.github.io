@@ -1,8 +1,15 @@
 ---
+author: Carsten Bokemeyer
 date: 2014-03-10
-linktitle: Migrating from Jekyll
 title: Migrate to Hugo from Jekyll
-highlight: "true"
+description:
+tags: [
+]
+
+categories: [
+    "Hugo"
+]
+highlight: true
 ---
 
 ## Move static content to `static`

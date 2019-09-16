@@ -1,19 +1,16 @@
-+++
-title = "Getting Started with Hugo"
-description = ""
-tags = [
-    "go",
-    "golang",
-    "hugo",
-    "development",
+---
+author: Carsten Bokemeyer
+date: 2014-04-02
+title: Getting Started with Hugo
+description:
+tags: [
 ]
-date = "2014-04-02"
-categories = [
-    "Development",
-    "golang",
+
+categories: [
+    "Hugo"
 ]
-highlight = "true"
-+++
+highlight: true
+---
 
 ## Step 1. Install Hugo
 
