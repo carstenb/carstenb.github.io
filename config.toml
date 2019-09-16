@@ -2,6 +2,9 @@ baseurl = "https://example.com/"
 languageCode = "de-DE"
 title = "Carsten Bokemeyer"
 
+enableRobotsTXT = true
+canonifyURLs = true
+
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = ""
 theme = "hugo-sustain"
