@@ -2,22 +2,19 @@ name: Projects
 source:
   - name: Chefkoch Apps
     description: Ei viderer tacimates pro, quem assum ea nam. Veritus omnesque eam te. Et natum mucius tamquam vel, ea dolorem volumus deterruisset nec. Graeci mentitum sea an, eu prima elaboraret est.
-    image: project1.png
     url: https://github.com/nurlansu/hugo-sustain
-    
+
+  - name: Chefkoch.de
+    description: Chefkoch.de, ein Produkt der Chefkoch GmbH, ist ein deutsches Webportal um das Thema Kochen mit 4,1 Millionen registrierten Nutzern.
+    url: https://www.chefkoch.de
+
   - name: Jobmensa.de
     description: An eripuit phaedrum qui, nec facer splendide ex, vel ea assum facilisi convenire. Te his neglegentur consectetuer.
-    image: project1.png
-    url: https://github.com/nurlansu/hugo-sustain
+    url: https://www.jobmensa.de
 
   - name: Jobeinstieg.de
     description: An alii quot tantas eum, doming platonem persecuti mea et, vim perpetua cotidieque delicatissimi in.
-    url: https://github.com/nurlansu/hugo-sustain
 
   - name: Studitemps.de
     description: Vim an case vidit sententiae, est at euismod laboramus efficiantur. Ei sit brute lorem, ea eam timeam viderer aliquid, cu integre omittam moderatius quo.
-    url: https://github.com/nurlansu/hugo-sustain
-
-  - name: Studitemps Promoter App
-    description: Dicta causae meliore ex vel, in vix erant integre petentium. Vix ei nisl scripta recusabo, eam doming blandit facilisis.
-    url: https://github.com/nurlansu/hugo-sustain
+    url: https://www.studitemps.de
