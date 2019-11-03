@@ -8,10 +8,12 @@
           {{ if .image }}
           <img class="project-image" src="../img/{{ .image }}" alt="{{ $el.name }}">
           {{ end }}
-          <h5>{{ $el.name }}</h5>
+          <h4>{{ $el.name }}</h4>
         {{ $el.description }}
         <br>
+        {{ if .url }}
         <a href="{{ .url }}">Visit Project</a>
+        {{ end }}
       </div>
       {{ end }}
       </div>
