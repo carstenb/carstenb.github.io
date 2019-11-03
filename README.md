@@ -13,6 +13,13 @@
 - Added project-urls, project-name and project-image to projects
 - Changed "Resume" to "About" Page
 
+## Todo
+- Related Posts
+- Categories und Tags Übersichtsseite
+- Überschriften optional machen (related und tags nur wenn vorhanden)
+- Individuelle Descriptions je Seite
+- Individuelle Social Infos je Seite
+
 ## License
 
 <p align="center">
