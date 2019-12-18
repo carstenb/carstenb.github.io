@@ -2,21 +2,15 @@
 author: Carsten Bokemeyer
 date: 2019-05-30
 title: Unterwegs auf der Product People 2019
-description:
-tags: [
-  "Speaker"
-]
-
-categories: [
-    "Product Management"
-]
+description: Auf der Product People 2019 war ich unterwegs und habe einen Vortrag gehalten zu nutzerzentrierter Produktentwicklung bei Chefkoch
+tags: [ "Speaker", "Kundenzentrierung" ]
+categories: [ "Product Management" ]
 ---
 
 ### Vortrag: Nutzerzentrierte Produktentwicklung - Ein Erfahrungsbericht aus der Praxis
 
 
 Die [Product People - Frühjahr 2019](http://www.productpeople.net) in Köln war eine großartige Gelegenheit sich mit anderen auszutauschen. Der Fokus des Barcamps lag wie im Namen geschrieben auf der Rolle des Product Owners. Dem entsprechend waren die Themen der zwei Tage stark auf Produktthemen fokussiert, was einen schönen Tiefgang erlaubte
-
 
 #### Themen im Vortrag (~30 min):
 

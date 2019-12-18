@@ -3,17 +3,15 @@ theme = "hugo-sustain"
 languageCode = "de-DE"
 title = "Carsten Bokemeyer"
 
-
-
 showReadingTime = true
 
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = ""
 enableRobotsTXT = true
-canonifyURLs = true
+# canonifyURLs = true
 
 [permalinks]
-  post = "/:year/:month/:day/:slug"
+  post = "/:year/:month/:title/"
 
 [params]
   avatar = "profile_new.png"

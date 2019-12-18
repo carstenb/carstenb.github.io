@@ -2,16 +2,9 @@
 author: Carsten Bokemeyer
 date: 2019-09-04
 title: Vortrag auf der Working Products 2019
-description:
-tags: [
-  "Speaker",
-  "Kundenzentrierung",
-  "Produktstrategie"
-]
-
-categories: [
-    "Product Management"
-]
+description: Vom 15.06.-16.06.2019 war ich auf der Working Products 2019 in Hamburg und habe dort einen Vortrag zu nutzerzentrierter Produktentwicklung gehalten.
+tags: [ "Speaker", "Kundenzentrierung", "Produktstrategie" ]
+categories: [ "Product Management" ]
 ---
 
 
@@ -23,14 +16,12 @@ Darin beschreibe ich einige wichtige Erkenntnisse, die Projektleitern, Beratern 
 
 Eine Rolle dabei spielen das Kano-Modell und die Basisanforderungen. Letztere sind Anforderungen, die der Kunde typischerweise nicht nennt, jedoch fordert („also das ist doch klar, dass wir das brauchen und das Teil des Auftrages ist - auch ohne dass ich ihnen das jetzt explizit gesagt habe ...“).
 
-
 #### Themen im Vortrag (~30 min):
 
 - Chefkoch Organisation & Geschäftsmodell
 - Produktentwicklung bei Chefkoch
 - Nutzermotive & Jobs to be done
 - Nutzerzentrierung ganz operativ
-
 
 {{< youtube 0bqOQ0Q68a8 >}}
 
