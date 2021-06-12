@@ -7,7 +7,7 @@ showpagemeta: true
 
 Carsten Bokemeyer\
 Schwester-Timothea-Strasse 20\
-53639 Königswinter\
+53639 Königswinter
 
 E-Mail: [info@carsten-bokemeyer.de](mailto:info@carsten-bokemeyer.de)  
 

@@ -3,6 +3,7 @@ date: "2016-10-02T22:55:05-04:00"
 title: "About"
 showpagemeta: true
 ---
+![This is an image](/img/blog/IMG_7568.jpg)
 
 Carsten Bokemeyer is an experienced Product Guy and Agile Enthusiast working in Bonn.
 
