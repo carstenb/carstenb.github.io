@@ -16,7 +16,7 @@ enableRobotsTXT = true
 [params]
   avatar = "profile_new.png"
   author = "Carsten Bokemeyer"
-  description = "Dies ist das Online Portfolio von Carsten Bokemeyer. Zur Zeit arbeitet er als Product Owner in Bonn."
+  description = "Dies ist das Online Portfolio von Carsten Bokemeyer. Zur Zeit arbeitet er als Head of Product Management in Köln."
 
   # Custom assets can be linked with their paths relative to static/
   custom_css = []
