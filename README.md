@@ -46,9 +46,9 @@ It renders through headless Chrome so the real self-hosted webfonts are used.
 Never re-typeset the card in an image editor — edit the template and re-run the
 script, otherwise the image drifts from the site's typography.
 
-The card's footer shows `carsten-bokemeyer.de`. That is where the site is
-headed; until the domain moves it differs from the address the site is served
-from.
+The card's footer shows the address the site is actually served from. It is one
+more thing to change when the custom domain lands — edit the template, re-run
+the script, commit the new PNG.
 
 ## Manual upkeep
 
