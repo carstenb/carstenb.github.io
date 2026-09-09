@@ -1,7 +1,7 @@
 baseurl = "https://example.com/"
 theme = "hugo-sustain"
 languageCode = "de-DE"
-title = "Carsten Bokemeyer"
+title = "Carsten Bokemeyer | Product Management Leader aus Bonn"
 
 showReadingTime = true
 
@@ -32,18 +32,18 @@ enableRobotsTXT = true
   RSS           = "blog/index.xml"
 
 ## Main Menu
-[[menu.main]]
-  name = "blog"
-  weight = 300
-  identifier = "blog"
-  url = "/blog/"
-[[menu.main]]
-  name = "projects"
-  identifier = "projects"
-  weight = 200
-  url = "/projects/"
-[[menu.main]]
-  name = "about"
-  identifier = "about"
-  weight = 100
-  url = "/about/"
+##[[menu.main]]
+##  name = "blog"
+##  weight = 300
+##  identifier = "blog"
+##  url = "/blog/"
+##[[menu.main]]
+##  name = "projects"
+##  identifier = "projects"
+##  weight = 200
+##  url = "/projects/"
+##[[menu.main]]
+##  name = "about"
+##  identifier = "about"
+##  weight = 100
+##  url = "/about/"

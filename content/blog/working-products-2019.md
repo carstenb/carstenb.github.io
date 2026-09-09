@@ -5,6 +5,7 @@ title: Vortrag auf der Working Products 2019
 description: Vom 15.06.-16.06.2019 war ich auf der Working Products 2019 in Hamburg und habe dort einen Vortrag zu nutzerzentrierter Produktentwicklung gehalten.
 tags: [ "Speaker", "Kundenzentrierung", "Produktstrategie" ]
 categories: [ "Product Management" ]
+draft: true
 ---
 
 

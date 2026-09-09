@@ -5,6 +5,7 @@ title: Unterwegs auf der Product People 2019
 description: Auf der Product People 2019 war ich unterwegs und habe einen Vortrag gehalten zu nutzerzentrierter Produktentwicklung bei Chefkoch
 tags: [ "Speaker", "Kundenzentrierung" ]
 categories: [ "Product Management" ]
+draft: true
 ---
 
 ### Vortrag: Nutzerzentrierte Produktentwicklung - Ein Erfahrungsbericht aus der Praxis

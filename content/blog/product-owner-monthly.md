@@ -5,6 +5,7 @@ title: Zu Gast beim Product Owner Monthly Meetup
 description: Am 06.06.2019 war ich auf dem Product Owner Monthly eingeladen um bei der 7. Ausgabe der Tacheles Reihe zum Thema Strategischer Umgang mit "historischem Erbe" zu sprechen
 tags: [ "Speaker", "Produktstrategie" ]
 categories: [ "Product Management" ]
+draft: true
 ---
 
 ### Tacheles #7 - Strategischer Umgang mit "historischem Erbe"

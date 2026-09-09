@@ -5,7 +5,7 @@ description = "Personal blog built with Bootstrap, powered by Hugo"
 homepage = "https://github.com/nurlansu/hugo-sustain"
 tags = ["blog", "minimal", "responsive"]
 features = ["responsive", "syntax highlighting"]
-min_version = 0.17
+min_version = "0.41.0"
 
 [author]
   name = "Nurlan Su"
