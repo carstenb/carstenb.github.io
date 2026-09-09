@@ -1,10 +1,2 @@
-### macOS ###
-# General
 .DS_Store
-.AppleDouble
-.LSOverride
-
-## Hugo ###
-# generated files by hugo
-/public/
-/resources/_gen/
+.claude/settings.local.json

@@ -1,28 +1,54 @@
+# carstenb.github.io
 
-## Portfolio Changelog
+Personal website of Carsten Bokemeyer — hand-written static HTML, no build step,
+no generator, no runtime JavaScript.
 
-> Version 1.0.0
+| Page | File | Language |
+|---|---|---|
+| Start | `index.html` | en |
+| CV | `cv/index.html` | en |
+| Imprint & privacy | `impressum/index.html` | de |
+| Not found | `404.html` | en |
 
-- Added readingtime to blogposts
-- Added impress
-- Require meta descriptions on all pages
-- Added favicons
-- Added new and removed old social icons
-- Added .gitignore
-- Added rss feed
-- Added project-urls, project-name and project-image to projects
-- Changed "Resume" to "About" Page
+## Layout
 
-## Todo
-- Related Posts
-- Categories und Tags Übersichtsseite
-- Überschriften optional machen (related und tags nur wenn vorhanden)
-- Individuelle Descriptions je Seite
-- Individuelle Social Infos je Seite
+```
+assets/site.css        All styling: tokens → shared shell → per-page blocks
+assets/fonts/          Self-hosted woff2 + their OFL licences
+assets/                Logo, portrait, company logos, favicons, OG image
+design/og-card.html    Source template for assets/og-image.png — not deployed
+site.webmanifest
+```
 
-## License
+## Conventions
 
-<p align="center">
-  <a href="./LICENSE.md"><img src="https://i.nurlan.co/logo.svg" width="100%" height="128"></a>
-  <a href="./LICENSE.md"><strong>MIT</strong></a>
-</p>
+- **Asset paths are root-absolute** (`/assets/…`). This is required, not cosmetic:
+  GitHub Pages serves `404.html` for any missing path while the address bar keeps
+  the requested URL, so relative paths would break on the error page.
+- **URLs always carry a trailing slash** — `/`, `/cv/`, `/impressum/`. The same
+  spelling is used in canonicals, Open Graph, the sitemap and internal links.
+- **Fonts are self-hosted.** Nothing is loaded from Google or any other third
+  party. The privacy text in the imprint says so — if that ever changes, the text
+  has to change with it.
+- **Page-specific CSS** is scoped by the `body` class: `page-start`, `page-cv`,
+  `page-imprint`, `page-404`.
+- Copy comes from the design handoff and is authored — don't paraphrase it.
+
+## Regenerating the social preview
+
+`assets/og-image.png` (1200×630) is exported from `design/og-card.html`. Open that
+file, edit the markup, and screenshot the `#og` element at 1×. Don't re-typeset it
+in an image editor.
+
+## Manual upkeep
+
+Not covered by any automation:
+
+- The `© 2026` in the footer of all four pages.
+- The imprint text (legal content).
+- A later move to a custom domain: canonicals, Open Graph URLs, the sitemap, the
+  JSON-LD `@id` and the Search Console property all change together.
+
+## History
+
+The previous Hugo site is preserved at the tag `old-site-2021`.

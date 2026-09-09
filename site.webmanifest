@@ -1,0 +1,16 @@
+{
+  "name": "Carsten Bokemeyer",
+  "short_name": "Carsten B.",
+  "description": "Product leader working on platform products, APIs and developer experience.",
+  "lang": "en",
+  "start_url": "/",
+  "scope": "/",
+  "display": "minimal-ui",
+  "background_color": "#FBFCFE",
+  "theme_color": "#FBFCFE",
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
