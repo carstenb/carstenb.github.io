@@ -110,7 +110,10 @@ h1 em,h2 em{font-style:normal;font-family:var(--script);color:var(--accent);font
 .page-start .hero .actions{margin-top:38px}
 .page-start .hero .below{display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:44px;align-items:start;margin-top:30px}
 
-.portrait-band{position:relative;width:210px;height:210px}
+/* The portrait comes first in the markup so it can float below 520px. Here it
+   belongs in the right-hand column, so order puts it back. This is visual
+   only: reading and tab order still follow the markup. */
+.portrait-band{position:relative;width:210px;height:210px;order:2}
 .portrait-band img{width:100%;height:100%;object-fit:cover;border-radius:50%;background:var(--sky);display:block}
 
 /* logo strip */
@@ -188,14 +191,23 @@ h1 em,h2 em{font-style:normal;font-family:var(--script);color:var(--accent);font
   .page-start .hero{padding:44px 0 0}
   .page-start section{padding:56px 0}
   .topics{gap:34px}
-  .page-start .hero .below{grid-template-columns:1fr;gap:26px}
-  .portrait-band{width:132px;height:132px}
+  /* Still two columns here. At 560px this leaves the copy ~348px, about 42
+     characters a line, so there is no reason to stack this early. */
+  .page-start .hero .below{grid-template-columns:minmax(0,1fr) 140px;gap:28px}
+  .portrait-band{width:140px;height:140px}
   .logos{margin-top:40px;padding:18px}
   .logos .set{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
   .logos .cell{height:38px}
   .ghline a{margin-left:0;display:flex;margin-top:8px}
 }
+/* Below 520px a fixed second column would squeeze the copy to roughly 23
+   characters a line. Instead the portrait floats and the text wraps around it,
+   narrow for about four lines and then full width again. shape-outside makes
+   the wrap follow the circle rather than its bounding box. */
 @media(max-width:520px){
+  .page-start .hero .below{display:block;margin-top:26px}
+  .page-start .hero .below::after{content:"";display:block;clear:both}
+  .portrait-band{float:right;width:120px;height:120px;margin:4px 0 12px 18px;shape-outside:circle(50%)}
   .page-start h1{font-size:31px}
   .page-start .hero .lead{font-size:16.5px}
   .logos .set{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -203,6 +215,11 @@ h1 em,h2 em{font-style:normal;font-family:var(--script);color:var(--accent);font
   .actions{gap:10px}
   .btn{padding:10px 16px;font-size:13.5px}
   .status{font-size:9.5px}
+}
+
+/* On the narrowest phones 120px leaves too little beside it. */
+@media(max-width:400px){
+  .portrait-band{width:92px;height:92px;margin-left:14px}
 }
 
 /* ==========================================================================
