@@ -1,0 +1,127 @@
+name: validate and deploy
+
+# Pages must NOT be set to "Deploy from a branch": that would publish every push
+# regardless of these checks. The Pages source has to be "GitHub Actions" so the
+# deploy job below is the only way anything goes live.
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+
+      # Site-specific invariants: canonical/OG spelling, noindex placement,
+      # no third-party fonts, no relative paths, manifest, sitemap, budgets.
+      - name: Site invariants
+        run: node design/check.js .
+
+      - name: Validate HTML
+        run: npx --yes html-validate@9 index.html cv/index.html impressum/index.html 404.html
+
+      - name: Serve the site
+        run: |
+          node design/serve.js . 4173 &
+          for i in $(seq 1 20); do curl -sf http://localhost:4173/ >/dev/null && break; sleep 0.5; done
+          curl -sf http://localhost:4173/ >/dev/null
+
+      # Internal links and assets only. External hosts are checked by hand before
+      # a launch — as a recurring CI check they go flaky and block for no reason.
+      - name: Check internal links
+        run: npx --yes linkinator@6 http://localhost:4173/ --recurse --skip "^(?!http://localhost:4173)"
+
+      - name: Accessibility (axe)
+        run: |
+          npx --yes @axe-core/cli@4 \
+            http://localhost:4173/ \
+            http://localhost:4173/cv/ \
+            http://localhost:4173/impressum/ \
+            http://localhost:4173/404.html \
+            --exit
+
+      # Median of three runs: a single runner dips below the performance
+      # threshold now and then without the site having changed.
+      - name: Lighthouse
+        run: |
+          cat > lighthouserc.json <<'JSON'
+          {
+            "ci": {
+              "collect": {
+                "url": [
+                  "http://localhost:4173/",
+                  "http://localhost:4173/cv/",
+                  "http://localhost:4173/impressum/"
+                ],
+                "numberOfRuns": 3
+              },
+              "assert": {
+                "assertions": {
+                  "categories:accessibility": ["error", { "minScore": 1 }],
+                  "categories:seo": ["error", { "minScore": 1 }],
+                  "categories:best-practices": ["error", { "minScore": 0.95 }],
+                  "categories:performance": ["error", { "minScore": 0.9 }]
+                }
+              }
+            }
+          }
+          JSON
+          npx --yes @lhci/cli@0.14.x autorun --config=lighthouserc.json
+
+  deploy-pages:
+    needs: validate
+    # Skipped until Pages is switched on and the repository variable is set.
+    # Until then this is a clean skip, not a red run.
+    if: github.ref == 'refs/heads/master' && vars.PAGES_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+
+      # design/ holds the OG card source, the preview server and the checker.
+      # None of it, and none of the repo plumbing, belongs on the public site.
+      - name: Assemble the artifact
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude '.git' --exclude '.github' --exclude '.claude' \
+            --exclude 'design' --exclude '_site' --exclude 'node_modules' \
+            --exclude '.gitignore' --exclude '.gitattributes' \
+            --exclude '.htmlvalidate.json' --exclude 'README.md' \
+            --exclude 'lighthouserc.json' --exclude '.lighthouseci' \
+            ./ _site/
+          test ! -e _site/design
+          test ! -e _site/README.md
+          test -f _site/index.html
+          test -f _site/404.html
+          test -f _site/.nojekyll
+          echo "artifact contents:" && find _site -type f | sort
+
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
