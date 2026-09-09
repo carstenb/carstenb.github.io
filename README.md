@@ -36,9 +36,19 @@ site.webmanifest
 
 ## Regenerating the social preview
 
-`assets/og-image.png` (1200×630) is exported from `design/og-card.html`. Open that
-file, edit the markup, and screenshot the `#og` element at 1×. Don't re-typeset it
-in an image editor.
+`assets/og-image.png` (1200×630) is exported from `design/og-card.html`:
+
+```bash
+./design/og-export.sh
+```
+
+It renders through headless Chrome so the real self-hosted webfonts are used.
+Never re-typeset the card in an image editor — edit the template and re-run the
+script, otherwise the image drifts from the site's typography.
+
+The card's footer shows `carsten-bokemeyer.de`. That is where the site is
+headed; until the domain moves it differs from the address the site is served
+from.
 
 ## Manual upkeep
 
