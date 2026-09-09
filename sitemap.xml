@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Only the indexable pages. /impressum/ is noindex by choice and 404.html is
+     never a destination, so neither belongs here. No lastmod: it would have to
+     be maintained by hand to mean anything. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://carstenb.github.io/</loc>
+  </url>
+  <url>
+    <loc>https://carstenb.github.io/cv/</loc>
+  </url>
+</urlset>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://carstenb.github.io/sitemap.xml

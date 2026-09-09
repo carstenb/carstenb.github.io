@@ -1,7 +1,13 @@
 <!doctype html><html><head><meta charset="utf-8">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700&family=Manrope:wght@400;500;600&family=Space+Mono:wght@400;700&family=Caveat+Brush&display=swap" rel="stylesheet">
+<title>OG card source — 1200×630</title>
 <style>
+/* Same self-hosted files the site uses, so an export cannot drift from the
+   live typography. Serve this file through the local preview
+   (node design/serve.js . 4173 → /design/og-card.html) so the paths resolve. */
+@font-face{font-family:'Gabarito';font-weight:400;src:url('/assets/fonts/gabarito-400.woff2') format('woff2')}
+@font-face{font-family:'Manrope';font-weight:400 600;src:url('/assets/fonts/manrope-var.woff2') format('woff2')}
+@font-face{font-family:'Space Mono';font-weight:400;src:url('/assets/fonts/space-mono-400.woff2') format('woff2')}
+@font-face{font-family:'Caveat Brush';font-weight:400;src:url('/assets/fonts/caveat-brush-400.woff2') format('woff2')}
 *{box-sizing:border-box;margin:0}
 body{background:#888;display:flex;justify-content:center;padding:20px}
 .og{width:1200px;height:630px;background:linear-gradient(178deg,#FBFCFE 0%,#E9F1FB 100%);padding:76px 84px;display:flex;flex-direction:column;justify-content:space-between;font-family:'Manrope',sans-serif;position:relative;overflow:hidden}
@@ -16,7 +22,7 @@ h1 em{font-style:normal;font-family:'Caveat Brush',cursive;color:#427ED6;font-si
 .url{font-family:'Space Mono',monospace;font-size:16px;letter-spacing:.11em;text-transform:uppercase;color:#5A6675;white-space:nowrap}
 </style></head><body>
 <div class="og" id="og">
-<div class="mk"><img src="../assets/carbo-logo.svg" alt=""><span class="nm">Carsten Bokemeyer<i>Product · Platform · People</i></span></div>
+<div class="mk"><img src="/assets/carbo-logo.svg" alt=""><span class="nm">Carsten Bokemeyer<i>Product · Platform · People</i></span></div>
 <h1>I build platforms as <em>products</em> — and the organizations that carry them.</h1>
 <div class="foot"><span class="role">Principal Product Manager, Platform at Cint</span><span class="url">carsten-bokemeyer.de</span></div>
 </div>
