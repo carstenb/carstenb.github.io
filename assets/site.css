@@ -86,7 +86,9 @@ img{max-width:100%}
 
 .foot{background:var(--sky);border-top:0}
 .foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:22px;padding-bottom:32px;font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3)}
-.foot a{display:inline-block;padding:6px 0;color:var(--ink-3)}
+/* Padding gives the link a 24px-tall hit area; the matching negative margin
+   cancels its effect on layout, so the footer keeps its designed height. */
+.foot a{display:inline-block;padding:6px 0;margin:-6px 0;color:var(--ink-3)}
 .foot a:hover{color:var(--accent-deep)}
 
 /* --- shared headline treatment -------------------------------------------- */
@@ -114,7 +116,7 @@ h1 em,h2 em{font-style:normal;font-family:var(--script);color:var(--accent);font
 /* logo strip */
 .logos{margin:64px 0 0;background:#fff;border:1px solid var(--rule);border-radius:18px;padding:22px 26px;display:grid;gap:16px;align-items:start}
 .logos .top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
-.logos .top a{display:inline-block;padding:6px 0;font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent-deep)}
+.logos .top a{display:inline-block;padding:6px 0;margin:-6px 0;font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent-deep)}
 .logos .set{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:26px;align-items:center;justify-items:center}
 /* The cell is the hover target, so the whole grid column reacts, not just the
    optically shrunk logo inside it. */
@@ -216,7 +218,7 @@ h1 em,h2 em{font-style:normal;font-family:var(--script);color:var(--accent);font
 .summary b{color:var(--ink);font-weight:600}
 .summary+.summary{margin-top:16px}
 .facts{margin:40px 0 0;padding-top:22px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:10px 34px;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--ink-2)}
-.facts a{display:inline-block;padding:4px 0;border-bottom:1px solid var(--rule-2)}
+.facts a{display:inline-block;padding:4px 0;margin:-4px 0;border-bottom:1px solid var(--rule-2)}
 
 .roles{margin-top:36px;display:grid;gap:38px}
 .role{display:grid;grid-template-columns:132px minmax(0,1fr);gap:34px}

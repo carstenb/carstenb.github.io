@@ -4,7 +4,11 @@
     {
       "name": "site",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["design/serve.js", ".", "4173"],
+      "runtimeArgs": [
+        "design/serve.js",
+        ".",
+        "4173"
+      ],
       "port": 4173
     }
   ]
