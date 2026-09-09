@@ -1,0 +1,21 @@
+{
+  "name": "carstenb-github-io",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Validation tooling for the static site. The site itself has no build step and no runtime dependencies.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "check": "node design/check.js .",
+    "validate:html": "html-validate index.html cv/index.html impressum/index.html 404.html",
+    "serve": "node design/serve.js . 4173",
+    "links": "linkinator http://localhost:4173/ --recurse --skip \"^(?!http://localhost:4173)\"",
+    "axe": "axe http://localhost:4173/ http://localhost:4173/cv/ http://localhost:4173/impressum/ http://localhost:4173/404.html --exit",
+    "lighthouse": "lhci autorun --config=lighthouserc.json"
+  },
+  "devDependencies": {
+    "@axe-core/cli": "4.13.0",
+    "@lhci/cli": "0.14.0",
+    "html-validate": "9.7.1",
+    "linkinator": "6.3.0"
+  }
+}

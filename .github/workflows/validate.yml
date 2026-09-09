@@ -27,6 +27,14 @@ jobs:
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: '22'
+          cache: npm
+
+      # npm ci installs exactly what package-lock.json pins, so re-validating
+      # this commit a year from now uses the same tool versions it passed with.
+      # Every tool below is then invoked with --no-install, which fails loudly
+      # rather than silently fetching something newer from the registry.
+      - name: Install tooling
+        run: npm ci
 
       # Site-specific invariants: canonical/OG spelling, noindex placement,
       # no third-party fonts, no relative paths, manifest, sitemap, budgets.
@@ -34,7 +42,7 @@ jobs:
         run: node design/check.js .
 
       - name: Validate HTML
-        run: npx --yes html-validate@9 index.html cv/index.html impressum/index.html 404.html
+        run: npx --no-install html-validate index.html cv/index.html impressum/index.html 404.html
 
       - name: Serve the site
         run: |
@@ -45,11 +53,11 @@ jobs:
       # Internal links and assets only. External hosts are checked by hand before
       # a launch — as a recurring CI check they go flaky and block for no reason.
       - name: Check internal links
-        run: npx --yes linkinator@6 http://localhost:4173/ --recurse --skip "^(?!http://localhost:4173)"
+        run: npx --no-install linkinator http://localhost:4173/ --recurse --skip "^(?!http://localhost:4173)"
 
       - name: Accessibility (axe)
         run: |
-          npx --yes @axe-core/cli@4 \
+          npx --no-install axe \
             http://localhost:4173/ \
             http://localhost:4173/cv/ \
             http://localhost:4173/impressum/ \
@@ -96,7 +104,7 @@ jobs:
             }
           }
           JSON
-          npx --yes @lhci/cli@0.14.x autorun --config=lighthouserc.json
+          npx --no-install lhci autorun --config=lighthouserc.json
 
   deploy-pages:
     needs: validate
@@ -126,9 +134,12 @@ jobs:
             --exclude '.gitignore' --exclude '.gitattributes' \
             --exclude '.htmlvalidate.json' --exclude 'README.md' \
             --exclude 'lighthouserc.json' --exclude '.lighthouseci' \
+            --exclude 'package.json' --exclude 'package-lock.json' \
             ./ _site/
           test ! -e _site/design
           test ! -e _site/README.md
+          test ! -e _site/package.json
+          test ! -e _site/node_modules
           test -f _site/index.html
           test -f _site/404.html
           test -f _site/.nojekyll

@@ -322,8 +322,9 @@ h1 em,h2 em{font-style:normal;font-family:var(--script);color:var(--accent);font
   body{background:#fff;color:#000}
   .wrap{max-width:none;padding:0}
   .page-cv .top,.page-cv section{padding:0 0 18pt}
-  /* Keep a role and its bullets on one page. */
-  .role,.row,.roles{break-inside:avoid}
+  /* Keep a single role and its bullets together. Not .roles — that wraps the
+     whole employment history, which is several pages long. */
+  .role,.row{break-inside:avoid}
   .role .org a::after,.facts a::after{content:" (" attr(href) ")";font-size:9pt;color:#444;word-break:break-all}
   .role .org a[href^="mailto:"]::after,.facts a[href^="mailto:"]::after{content:""}
   a{color:#000}

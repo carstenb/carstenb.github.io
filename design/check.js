@@ -24,6 +24,14 @@ const SITEMAP_URLS = [`${ORIGIN}/`, `${ORIGIN}/cv/`];
 // Byte budgets. og-image is fetched only by scrapers, so it gets its own.
 const BUDGET = { html: 60_000, css: 40_000, font: 60_000, image: 120_000, ogImage: 400_000, total: 2_500_000 };
 
+// Repo plumbing that the deploy job excludes from the artifact. Keep this in
+// step with the rsync --exclude list in .github/workflows/validate.yml, or the
+// budget below measures files no visitor ever downloads.
+const NOT_DEPLOYED = new Set([
+  'package.json', 'package-lock.json', 'README.md',
+  'lighthouserc.json', '.htmlvalidate.json', '.gitignore', '.gitattributes',
+]);
+
 const problems = [];
 const fail = (m) => problems.push(m);
 const read = (p) => fs.readFileSync(path.join(ROOT, p), 'utf8');
@@ -140,6 +148,7 @@ const walk = (dir) => {
       walk(full);
       continue;
     }
+    if (NOT_DEPLOYED.has(entry.name)) continue;
     const size = fs.statSync(full).size;
     total += size;
     const ext = path.extname(entry.name);
