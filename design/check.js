@@ -133,7 +133,10 @@ const walk = (dir) => {
     const full = path.join(dir, entry.name);
     const rel = path.relative(ROOT, full);
     if (entry.isDirectory()) {
-      if (['.git', 'design', 'node_modules', '.github', '.claude'].includes(entry.name)) continue;
+      // Dot-directories are tooling, never deployed content — .git, .github,
+      // .claude, and local artefacts like .lighthouseci, which would otherwise
+      // blow the byte budget with 800 KB report files.
+      if (entry.name.startsWith('.') || ['design', 'node_modules'].includes(entry.name)) continue;
       walk(full);
       continue;
     }

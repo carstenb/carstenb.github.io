@@ -83,22 +83,12 @@ jobs:
                     }
                   },
                   {
-                    "_comment": "link-text is off because it flags the nav label \"Start\" as generic. That word is authored copy from the design handoff, and Lighthouse judges the visible text, so aria-label cannot satisfy it. Turning it off drops the category ceiling to 0.92, so the SEO audits that actually matter are asserted individually below instead of relying on the category score.",
                     "matchingUrlPattern": "^(?!.*/impressum/).*$",
                     "assertions": {
                       "categories:accessibility": ["error", { "minScore": 1 }],
                       "categories:best-practices": ["error", { "minScore": 0.95 }],
                       "categories:performance": ["error", { "minScore": 0.9 }],
-                      "categories:seo": ["error", { "minScore": 0.9 }],
-                      "link-text": "off",
-                      "canonical": "error",
-                      "document-title": "error",
-                      "meta-description": "error",
-                      "http-status-code": "error",
-                      "is-crawlable": "error",
-                      "crawlable-anchors": "error",
-                      "hreflang": "error",
-                      "image-alt": "error"
+                      "categories:seo": ["error", { "minScore": 1 }]
                     }
                   }
                 ]
