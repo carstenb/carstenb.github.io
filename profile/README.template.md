@@ -1,7 +1,8 @@
 <!-- Generated from carstenb.github.io by profile/build.js. Do not edit here; changes are overwritten. -->
 
-<!-- tagline: Product strategy × Platform engineering × Organisational design -->
 {{header}}
+
+[Product strategy × Platform engineering × Organisational design]({{links.site}}#work)
 
 **{{role}}**
 
