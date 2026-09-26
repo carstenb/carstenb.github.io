@@ -3,3 +3,4 @@
 .lighthouseci/
 lighthouserc.json
 node_modules/
+build/

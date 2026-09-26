@@ -41,6 +41,11 @@ jobs:
       - name: Site invariants
         run: node design/check.js .
 
+      # The GitHub profile README is generated from index.html. A markup change
+      # that breaks extraction fails here, on the PR, never on the live profile.
+      - name: Profile README builds
+        run: node profile/build.js > /dev/null
+
       - name: Validate HTML
         run: npx --no-install html-validate index.html cv/index.html impressum/index.html 404.html
 
@@ -130,13 +135,14 @@ jobs:
           mkdir -p _site
           rsync -a \
             --exclude '.git' --exclude '.github' --exclude '.claude' \
-            --exclude 'design' --exclude '_site' --exclude 'node_modules' \
+            --exclude 'design' --exclude 'profile' --exclude 'build' --exclude '_site' --exclude 'node_modules' \
             --exclude '.gitignore' --exclude '.gitattributes' \
             --exclude '.htmlvalidate.json' --exclude 'README.md' \
             --exclude 'lighthouserc.json' --exclude '.lighthouseci' \
             --exclude 'package.json' --exclude 'package-lock.json' \
             ./ _site/
           test ! -e _site/design
+          test ! -e _site/profile
           test ! -e _site/README.md
           test ! -e _site/package.json
           test ! -e _site/node_modules
