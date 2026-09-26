@@ -188,15 +188,16 @@ function headerSvgs(tagline) {
     `@font-face{font-family:'Space Mono';src:url(data:font/woff2;base64,${font('space-mono-400.woff2')}) format('woff2')}`,
   ].join('\n');
 
-  const W = 790;
   const H = 226;
   const logoH = 128;
   const logoW = Math.round((logoH * vbW) / vbH);
   const textX = logoW + 30;
   // Space Mono is monospaced (advance 0.612em), so the marker behind the
   // tagline can be sized exactly without measuring text.
-  const tagSize = 15;
+  const tagSize = 18;
   const tagW = Math.ceil([...tagline].length * 0.612 * tagSize);
+  // Wide enough for the claim's longest line and the marker, whichever is wider.
+  const W = Math.max(790, textX + tagW + 12);
 
   const build = (c, logo) => {
     const tspans = (line) =>
@@ -218,7 +219,7 @@ function headerSvgs(tagline) {
       `<text x="${textX}" y="100" font-size="42" letter-spacing="-0.8" fill="${c.ink}">${tspans(lines[0])}</text>`,
       `<text x="${textX}" y="150" font-size="42" letter-spacing="-0.8" fill="${c.ink}">${tspans(lines[1])}</text>`,
       '</g>',
-      `<rect x="${textX - 10}" y="184" width="${tagW + 20}" height="30" rx="3" fill="${marker.fill}"/>`,
+      `<rect x="${textX - 10}" y="182" width="${tagW + 20}" height="32" rx="3" fill="${marker.fill}"/>`,
       `<text x="${textX}" y="204" font-family="'Space Mono',ui-monospace,monospace" font-size="${tagSize}" fill="${marker.ink}">${escapeXml(tagline)}</text>`,
       '</svg>',
       '',
@@ -249,7 +250,7 @@ const alt = escapeXml(`${name}: ${claimPlain} ${tagline}`);
 const header = [
   '<picture>',
   '  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">',
-  `  <img src="assets/header-light.svg" alt="${alt}" width="100%">`,
+  `  <img src="assets/header-light.svg" alt="${alt}" width="560">`,
   '</picture>',
 ].join('\n');
 
