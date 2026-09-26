@@ -1,0 +1,69 @@
+name: sync profile README
+
+# Publishes the generated GitHub profile README to carstenb/carstenb. That repo
+# is build output only: README.md and assets/, no workflow, no hand edits.
+# Anything changed there directly is overwritten by the next run.
+#
+# Needs the secret PROFILE_REPO_TOKEN: a fine-grained token limited to
+# carstenb/carstenb with Contents: Read and write. The default GITHUB_TOKEN
+# cannot write to another repository. When the token expires this workflow
+# fails loudly; the profile itself stays as it was.
+
+on:
+  push:
+    branches: [master]
+    # Everything the profile is built from, so the contract is visible here.
+    paths:
+      - index.html
+      - profile/**
+      - assets/site.css
+      - assets/carbo-logo.svg
+      - assets/fonts/gabarito-400.woff2
+      - assets/fonts/caveat-brush-400.woff2
+      - .github/workflows/sync-profile-readme.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: profile-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+
+      # Fails here on any extraction or house-rule problem, before the profile
+      # repository is touched.
+      - name: Build the profile
+        run: node profile/build.js --out build/profile
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: carstenb/carstenb
+          token: ${{ secrets.PROFILE_REPO_TOKEN }}
+          path: profile-repo
+
+      # --delete makes the profile repo equal the generated output exactly, so
+      # an asset that is no longer generated disappears there too.
+      - name: Replace the profile contents
+        run: rsync -a --delete --exclude '.git' build/profile/ profile-repo/
+
+      - name: Commit and push if changed
+        working-directory: profile-repo
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "profile unchanged"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "chore: sync profile README (${GITHUB_SHA::7})"
+          git push
