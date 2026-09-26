@@ -20,6 +20,7 @@ on:
       - assets/carbo-logo.svg
       - assets/fonts/gabarito-400.woff2
       - assets/fonts/caveat-brush-400.woff2
+      - assets/fonts/space-mono-400.woff2
       - .github/workflows/sync-profile-readme.yml
   workflow_dispatch:
 

@@ -1,12 +1,11 @@
 <!-- Generated from carstenb.github.io by profile/build.js. Do not edit here; changes are overwritten. -->
 
+<!-- tagline: Product strategy × Platform engineering × Organisational design -->
 {{header}}
-
-`Product strategy × Platform engineering × Organisational design`
 
 **{{role}}**
 
-{{portrait}}I work where product management, platform engineering and organisational design meet: APIs, developer experience, self-service and increasingly AI-native interfaces.
+I work where product management, platform engineering and organisational design meet: APIs, developer experience, self-service and increasingly AI-native interfaces.
 
 ### What I work on
 
