@@ -50,12 +50,39 @@ The card's footer shows the address the site is actually served from. It is one
 more thing to change when the custom domain lands — edit the template, re-run
 the script, commit the new PNG.
 
+## GitHub profile README
+
+The profile at github.com/carstenb comes from the repo `carstenb/carstenb`,
+which is build output only. Don't edit it there; the next sync overwrites it.
+
+```bash
+npm run profile
+```
+
+prints the README. `profile/build.js` takes identity from the JSON-LD, and the
+claim, topics, Mandoria headline, companies and contact address from
+`index.html`. It also sets the claim as an SVG header in the site's fonts and
+colours. `profile/README.template.md` holds the structure and the copy that only
+exists for GitHub. The rule: facts, identity, positioning and reusable content
+come from the site; GitHub-specific wording stays in the template.
+
+Extraction is strict. If a markup change leaves it without a claim, topic or
+company, the `validate` workflow fails on the PR. After a merge that touches
+any of its inputs, `sync-profile-readme.yml` builds the profile and mirrors it
+into `carstenb/carstenb`.
+
+The sync needs the Actions secret `PROFILE_REPO_TOKEN`: a fine-grained token
+for `carstenb/carstenb` only, with Contents: Read and write. **It expires.** When
+it does, the sync fails and the profile stays as it was until a new token is
+stored.
+
 ## Manual upkeep
 
 Not covered by any automation:
 
 - The `© 2026` in the footer of all four pages.
 - The imprint text (legal content).
+- Renewing `PROFILE_REPO_TOKEN` before it expires.
 - A later move to a custom domain: canonicals, Open Graph URLs, the sitemap, the
   JSON-LD `@id` and the Search Console property all change together.
 

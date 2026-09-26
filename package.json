@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "check": "node design/check.js .",
+    "profile": "node profile/build.js",
     "validate:html": "html-validate index.html cv/index.html impressum/index.html 404.html",
     "serve": "node design/serve.js . 4173",
     "links": "linkinator http://localhost:4173/ --recurse --skip \"^(?!http://localhost:4173)\"",

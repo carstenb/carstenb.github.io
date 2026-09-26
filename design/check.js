@@ -144,7 +144,7 @@ const walk = (dir) => {
       // Dot-directories are tooling, never deployed content — .git, .github,
       // .claude, and local artefacts like .lighthouseci, which would otherwise
       // blow the byte budget with 800 KB report files.
-      if (entry.name.startsWith('.') || ['design', 'node_modules'].includes(entry.name)) continue;
+      if (entry.name.startsWith('.') || ['design', 'profile', 'build', 'node_modules'].includes(entry.name)) continue;
       walk(full);
       continue;
     }
