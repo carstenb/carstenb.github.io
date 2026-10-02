@@ -60,6 +60,19 @@ jobs:
       - name: Check internal links
         run: npx --no-install linkinator http://localhost:4173/ --recurse --skip "^(?!http://localhost:4173)"
 
+      # chromedriver is the one dependency that must NOT be pinned: it is a shim
+      # for whatever Chrome the runner happens to have, and the runner updates
+      # Chrome on its own. @axe-core/cli declares it as "latest" for exactly that
+      # reason; our lockfile froze it at 152 and the build broke the moment the
+      # runner moved to Chrome 154. Everything that decides pass or fail, axe-core
+      # itself included, stays pinned.
+      - name: Match chromedriver to the runner's Chrome
+        run: |
+          chrome="$(command -v google-chrome || command -v google-chrome-stable || echo /opt/google/chrome/chrome)"
+          major="$("$chrome" --version | grep -oE '[0-9]+' | head -1)"
+          echo "Chrome major version: $major"
+          npm install --no-save --no-audit --no-fund "chromedriver@^${major}"
+
       - name: Accessibility (axe)
         run: |
           npx --no-install axe \

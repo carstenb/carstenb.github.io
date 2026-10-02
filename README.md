@@ -46,9 +46,34 @@ It renders through headless Chrome so the real self-hosted webfonts are used.
 Never re-typeset the card in an image editor — edit the template and re-run the
 script, otherwise the image drifts from the site's typography.
 
-The card's footer shows the address the site is actually served from. It is one
-more thing to change when the custom domain lands — edit the template, re-run
-the script, commit the new PNG.
+The card's footer shows the address the site is served from, so it changes with
+the domain: edit the template, re-run the script, commit the new PNG.
+
+## Domain and hosting
+
+The site is served from `https://carsten-bokemeyer.de`. `carstenb.github.io`
+redirects to it, as does `www`.
+
+**There is no CNAME file in this repo, and there must not be one.** GitHub only
+writes one when a site publishes from a branch. This repo publishes from a
+custom Actions workflow, where any CNAME file is ignored; the domain lives in
+the Pages settings instead, alongside the source setting "GitHub Actions".
+
+DNS at the registrar (dogado):
+
+```
+carsten-bokemeyer.de              A      185.199.108-111.153  (four records)
+carsten-bokemeyer.de              AAAA   2606:50c0:8000-8003::153  (four records)
+www                               CNAME  carstenb.github.io.
+_github-pages-challenge-carstenb  TXT    domain verification, optional
+```
+
+One thing worth knowing if HTTPS ever gets stuck again: the certificate covers
+the apex and `www` **together**. While `www` had no DNS record at all, GitHub
+could not complete the challenge for that name, so no certificate was issued
+for either, and "Enforce HTTPS" stayed greyed out for five days with nothing in
+the interface explaining why. Check that both names resolve before looking
+anywhere else.
 
 ## GitHub profile README
 
@@ -83,8 +108,21 @@ Not covered by any automation:
 - The `© 2026` in the footer of all four pages.
 - The imprint text (legal content).
 - Renewing `PROFILE_REPO_TOKEN` before it expires.
-- A later move to a custom domain: canonicals, Open Graph URLs, the sitemap, the
-  JSON-LD `@id` and the Search Console property all change together.
+
+If the domain ever changes again, these move together. `design/check.js` asserts
+most of them, so it will fail loudly on anything missed:
+
+```
+index.html, cv/index.html, impressum/index.html   canonical, og:url, og:image
+index.html                                        JSON-LD url, @id, image
+sitemap.xml                                       both <loc> entries
+robots.txt                                        the Sitemap: line
+design/check.js                                   the ORIGIN constant
+design/og-card.html                               footer line, then re-export
+```
+
+Outside the repo: the Pages custom domain setting, the DNS records above, and
+the Search Console property.
 
 ## History
 

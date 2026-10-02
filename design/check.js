@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(process.argv[2] || '.');
-const ORIGIN = 'https://carstenb.github.io';
+const ORIGIN = 'https://carsten-bokemeyer.de';
 
 // Deployed pages and what we expect of them.
 const PAGES = [
