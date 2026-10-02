@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://carstenb.github.io/sitemap.xml
+Sitemap: https://carsten-bokemeyer.de/sitemap.xml

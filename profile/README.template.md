@@ -33,4 +33,4 @@ Product work across **{{companies}}** → [CV]({{links.cv}})
 
 <br>
 
-<sub>This profile is generated from [carstenb.github.io]({{links.site}}).</sub>
+<sub>This profile is generated from [carsten-bokemeyer.de]({{links.site}}).</sub>
