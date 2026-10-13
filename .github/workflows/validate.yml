@@ -23,7 +23,11 @@ jobs:
     permissions:
       contents: read
     steps:
+      # Depth 2 so a pull request's merge commit has its base as parent; the
+      # Lighthouse decision below diffs against it.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: '22'
@@ -82,9 +86,36 @@ jobs:
             http://localhost:4173/404.html \
             --exit
 
+      # Lighthouse is the slow step, so it runs only where it can tell us
+      # something new. On a push to master it is skipped: branch protection
+      # requires a pull request that is up to date with master, so the merge
+      # commit is what that pull request already measured. On a pull request it
+      # is skipped when every changed file is one the deployed site does not
+      # contain. Unknown paths count as relevant. Manual runs always measure.
+      - name: Decide whether Lighthouse runs
+        id: lighthouse
+        env:
+          EVENT: ${{ github.event_name }}
+        run: |
+          case "$EVENT" in
+            workflow_dispatch) run=true ;;
+            pull_request)
+              changed="$(git diff --name-only HEAD^1 HEAD)"
+              echo "changed files:"; echo "$changed" | sed 's/^/  /'
+              if echo "$changed" | grep -qvE '^(profile/|\.claude/|README\.md$|\.gitignore$|\.gitattributes$|\.github/workflows/sync-profile-readme\.yml$)'; then
+                run=true
+              else
+                run=false
+              fi ;;
+            *) run=false ;;
+          esac
+          echo "Lighthouse runs: $run"
+          echo "run=$run" >> "$GITHUB_OUTPUT"
+
       # Median of three runs: a single runner dips below the performance
       # threshold now and then without the site having changed.
       - name: Lighthouse
+        if: steps.lighthouse.outputs.run == 'true'
         run: |
           cat > lighthouserc.json <<'JSON'
           {
