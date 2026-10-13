@@ -106,16 +106,23 @@ const topics = all(section('work'), /<div class="topic">([\s\S]*?)<\/div>/g, '.t
   line: need(inline(m[1].match(/<h3>([\s\S]*?)<\/h3>/)?.[1] ?? ''), `.topic ${i + 1} h3`),
 }));
 
-// Mandoria: its tag and headline from the side-projects section.
+// Side projects: tag and headline from the side-projects section. The tag may
+// wrap the name in a span (folgen keeps its lower case), so match up to the h3.
 const side = section('side');
-const projects = [...side.matchAll(/<span class="tag">([\s\S]*?)<\/span>\s*<h3>([\s\S]*?)<\/h3>/g)]
-  .map((m) => ({ tag: inline(m[1]), line: inline(m[2]) }))
-  .filter((p) => p.tag.startsWith('Building · Mandoria'));
-if (projects.length !== 1) fail(`#side Mandoria tag: expected exactly one, found ${projects.length}`);
-const mandoria = {
-  name: need(projects[0]?.tag.split('·').pop(), '#side Mandoria name'),
-  line: need(projects[0]?.line.replace(/\.$/, ''), '#side Mandoria h3'),
+const sideProjects = [...side.matchAll(/<span class="tag">([\s\S]*?)<\/span>\s*<h3>([\s\S]*?)<\/h3>/g)].map((m) => ({
+  tag: inline(m[1]),
+  line: inline(m[2]),
+}));
+const sideProject = (title) => {
+  const found = sideProjects.filter((p) => p.tag === `Building · ${title}`);
+  if (found.length !== 1) fail(`#side ${title} tag: expected exactly one, found ${found.length}`);
+  return {
+    name: need(found[0]?.tag.split('·').pop(), `#side ${title} name`),
+    line: need(found[0]?.line.replace(/\.$/, ''), `#side ${title} h3`),
+  };
 };
+const mandoria = sideProject('Mandoria');
+const folgen = sideProject('folgen');
 
 // Companies: alt text of every logo, in page order.
 const logos = hero.split(/<div class="logos">/)[1] ?? '';
@@ -243,6 +250,7 @@ const values = {
   role: `${jobTitle} at ${employer}`,
   companies: joined,
   mandoria,
+  folgen,
   links: { site, cv: `${site}cv/`, linkedin, email: mailto },
 };
 
